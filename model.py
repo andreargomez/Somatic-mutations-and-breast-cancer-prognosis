@@ -94,14 +94,6 @@ xgbauc = roc_auc_score(ytest, xgbm.predict_proba(Xtest)[:, 1])
 print(f"  CV AUC: {xgbcv.mean():.3f} ± {xgbcv.std():.3f}")
 print(f"  Test AUC: {xgbauc:.3f}")
 
-# model comparison
-print("\n" + "="*50)
-print(f"{'Model':<25} {'CV AUC':>10} {'Test AUC':>10}")
-print("-"*50)
-print(f"{'Logistic Regression':<25} {lrcv.mean():>10.3f} {lrauc:>10.3f}")
-print(f"{'Random Forest':<25} {rfcv.mean():>10.3f} {rfauc:>10.3f}")
-print(f"{'XGBoost':<25} {xgbcv.mean():>10.3f} {xgbauc:>10.3f}")
-
 bname, bmodel, bauc, bXtest = max(
     [
         ('Logistic Regression', lr, lrauc, Xtests),
